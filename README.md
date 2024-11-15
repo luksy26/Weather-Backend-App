@@ -67,3 +67,21 @@ Introduce communication failures or interruptions to evaluate how gracefully eac
 ## Results and Analysis
 
 TODO
+
+## How to run
+
+```bash
+git clone http`s://github.com/luksy26/Weather-Backend-App.git
+cd Weather-Backend-App/build
+cmake ..
+make
+```
+
+If no problems were encountered, `make` should have generated multiple executables for the application:
+
+```bash
+./demo
+./test_latency
+./test_resource_usage
+./test_throughput
+```
