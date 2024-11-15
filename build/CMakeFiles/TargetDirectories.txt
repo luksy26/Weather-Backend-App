@@ -1,7 +1,0 @@
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/WeatherLib.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/demo.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/test_latency.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/test_throughput.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/test_resource_usage.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/edit_cache.dir
-/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/rebuild_cache.dir

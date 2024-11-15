@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/WeatherApp.dir/WeatherServer.cpp.o CMakeFiles/WeatherApp.dir/WeatherClient.cpp.o CMakeFiles/WeatherApp.dir/main.cpp.o -o WeatherApp 

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/test_throughput.dir/test_throughput.cpp.o -o test_throughput  libWeatherLib.a 
