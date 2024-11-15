@@ -1,0 +1,3 @@
+/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/WeatherApp.dir
+/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles/rebuild_cache.dir
