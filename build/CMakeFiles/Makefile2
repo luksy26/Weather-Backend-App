@@ -63,7 +63,10 @@ CMAKE_BINARY_DIR = /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/WeatherApp.dir/all
+all: CMakeFiles/WeatherLib.dir/all
+all: CMakeFiles/demo.dir/all
+all: CMakeFiles/test_latency.dir/all
+all: CMakeFiles/test_throughput.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -71,34 +74,115 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
-clean: CMakeFiles/WeatherApp.dir/clean
+clean: CMakeFiles/WeatherLib.dir/clean
+clean: CMakeFiles/demo.dir/clean
+clean: CMakeFiles/test_latency.dir/clean
+clean: CMakeFiles/test_throughput.dir/clean
 .PHONY : clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/WeatherApp.dir
+# Target rules for target CMakeFiles/WeatherLib.dir
 
 # All Build rule for target.
-CMakeFiles/WeatherApp.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles --progress-num=1,2,3,4 "Built target WeatherApp"
-.PHONY : CMakeFiles/WeatherApp.dir/all
+CMakeFiles/WeatherLib.dir/all:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles --progress-num=1,2,3 "Built target WeatherLib"
+.PHONY : CMakeFiles/WeatherLib.dir/all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/WeatherApp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 4
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/WeatherApp.dir/all
+CMakeFiles/WeatherLib.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 3
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/WeatherLib.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 0
-.PHONY : CMakeFiles/WeatherApp.dir/rule
+.PHONY : CMakeFiles/WeatherLib.dir/rule
 
 # Convenience name for target.
-WeatherApp: CMakeFiles/WeatherApp.dir/rule
-.PHONY : WeatherApp
+WeatherLib: CMakeFiles/WeatherLib.dir/rule
+.PHONY : WeatherLib
 
 # clean rule for target.
-CMakeFiles/WeatherApp.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/clean
-.PHONY : CMakeFiles/WeatherApp.dir/clean
+CMakeFiles/WeatherLib.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/clean
+.PHONY : CMakeFiles/WeatherLib.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/demo.dir
+
+# All Build rule for target.
+CMakeFiles/demo.dir/all: CMakeFiles/WeatherLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles --progress-num=4,5 "Built target demo"
+.PHONY : CMakeFiles/demo.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/demo.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/demo.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 0
+.PHONY : CMakeFiles/demo.dir/rule
+
+# Convenience name for target.
+demo: CMakeFiles/demo.dir/rule
+.PHONY : demo
+
+# clean rule for target.
+CMakeFiles/demo.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/clean
+.PHONY : CMakeFiles/demo.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_latency.dir
+
+# All Build rule for target.
+CMakeFiles/test_latency.dir/all: CMakeFiles/WeatherLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles --progress-num=6,7 "Built target test_latency"
+.PHONY : CMakeFiles/test_latency.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_latency.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_latency.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_latency.dir/rule
+
+# Convenience name for target.
+test_latency: CMakeFiles/test_latency.dir/rule
+.PHONY : test_latency
+
+# clean rule for target.
+CMakeFiles/test_latency.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/clean
+.PHONY : CMakeFiles/test_latency.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/test_throughput.dir
+
+# All Build rule for target.
+CMakeFiles/test_throughput.dir/all: CMakeFiles/WeatherLib.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles --progress-num=8,9 "Built target test_throughput"
+.PHONY : CMakeFiles/test_throughput.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/test_throughput.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 5
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/test_throughput.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /mnt/c/Users/Lucas/OneDrive/Desktop/master/SASPS/proj/Weather-Backend-App/build/CMakeFiles 0
+.PHONY : CMakeFiles/test_throughput.dir/rule
+
+# Convenience name for target.
+test_throughput: CMakeFiles/test_throughput.dir/rule
+.PHONY : test_throughput
+
+# clean rule for target.
+CMakeFiles/test_throughput.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/clean
+.PHONY : CMakeFiles/test_throughput.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

@@ -117,24 +117,63 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named WeatherApp
+# Target rules for targets named WeatherLib
 
 # Build rule for target.
-WeatherApp: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 WeatherApp
-.PHONY : WeatherApp
+WeatherLib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 WeatherLib
+.PHONY : WeatherLib
 
 # fast build rule for target.
-WeatherApp/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/build
-.PHONY : WeatherApp/fast
+WeatherLib/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/build
+.PHONY : WeatherLib/fast
+
+#=============================================================================
+# Target rules for targets named demo
+
+# Build rule for target.
+demo: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 demo
+.PHONY : demo
+
+# fast build rule for target.
+demo/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
+.PHONY : demo/fast
+
+#=============================================================================
+# Target rules for targets named test_latency
+
+# Build rule for target.
+test_latency: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_latency
+.PHONY : test_latency
+
+# fast build rule for target.
+test_latency/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/build
+.PHONY : test_latency/fast
+
+#=============================================================================
+# Target rules for targets named test_throughput
+
+# Build rule for target.
+test_throughput: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_throughput
+.PHONY : test_throughput
+
+# fast build rule for target.
+test_throughput/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/build
+.PHONY : test_throughput/fast
 
 WeatherClient.o: WeatherClient.cpp.o
 .PHONY : WeatherClient.o
 
 # target to build an object file
 WeatherClient.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherClient.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherClient.cpp.o
 .PHONY : WeatherClient.cpp.o
 
 WeatherClient.i: WeatherClient.cpp.i
@@ -142,7 +181,7 @@ WeatherClient.i: WeatherClient.cpp.i
 
 # target to preprocess a source file
 WeatherClient.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherClient.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherClient.cpp.i
 .PHONY : WeatherClient.cpp.i
 
 WeatherClient.s: WeatherClient.cpp.s
@@ -150,7 +189,7 @@ WeatherClient.s: WeatherClient.cpp.s
 
 # target to generate assembly for a file
 WeatherClient.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherClient.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherClient.cpp.s
 .PHONY : WeatherClient.cpp.s
 
 WeatherServer.o: WeatherServer.cpp.o
@@ -158,7 +197,7 @@ WeatherServer.o: WeatherServer.cpp.o
 
 # target to build an object file
 WeatherServer.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherServer.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherServer.cpp.o
 .PHONY : WeatherServer.cpp.o
 
 WeatherServer.i: WeatherServer.cpp.i
@@ -166,7 +205,7 @@ WeatherServer.i: WeatherServer.cpp.i
 
 # target to preprocess a source file
 WeatherServer.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherServer.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherServer.cpp.i
 .PHONY : WeatherServer.cpp.i
 
 WeatherServer.s: WeatherServer.cpp.s
@@ -174,7 +213,7 @@ WeatherServer.s: WeatherServer.cpp.s
 
 # target to generate assembly for a file
 WeatherServer.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/WeatherServer.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherLib.dir/build.make CMakeFiles/WeatherLib.dir/WeatherServer.cpp.s
 .PHONY : WeatherServer.cpp.s
 
 main.o: main.cpp.o
@@ -182,7 +221,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -190,7 +229,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -198,8 +237,56 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/WeatherApp.dir/build.make CMakeFiles/WeatherApp.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+test_latency.o: test_latency.cpp.o
+.PHONY : test_latency.o
+
+# target to build an object file
+test_latency.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/test_latency.cpp.o
+.PHONY : test_latency.cpp.o
+
+test_latency.i: test_latency.cpp.i
+.PHONY : test_latency.i
+
+# target to preprocess a source file
+test_latency.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/test_latency.cpp.i
+.PHONY : test_latency.cpp.i
+
+test_latency.s: test_latency.cpp.s
+.PHONY : test_latency.s
+
+# target to generate assembly for a file
+test_latency.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/test_latency.cpp.s
+.PHONY : test_latency.cpp.s
+
+test_throughput.o: test_throughput.cpp.o
+.PHONY : test_throughput.o
+
+# target to build an object file
+test_throughput.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/test_throughput.cpp.o
+.PHONY : test_throughput.cpp.o
+
+test_throughput.i: test_throughput.cpp.i
+.PHONY : test_throughput.i
+
+# target to preprocess a source file
+test_throughput.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/test_throughput.cpp.i
+.PHONY : test_throughput.cpp.i
+
+test_throughput.s: test_throughput.cpp.s
+.PHONY : test_throughput.s
+
+# target to generate assembly for a file
+test_throughput.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/test_throughput.cpp.s
+.PHONY : test_throughput.cpp.s
 
 # Help Target
 help:
@@ -209,7 +296,10 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... WeatherApp"
+	@echo "... WeatherLib"
+	@echo "... demo"
+	@echo "... test_latency"
+	@echo "... test_throughput"
 	@echo "... WeatherClient.o"
 	@echo "... WeatherClient.i"
 	@echo "... WeatherClient.s"
@@ -219,6 +309,12 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... test_latency.o"
+	@echo "... test_latency.i"
+	@echo "... test_latency.s"
+	@echo "... test_throughput.o"
+	@echo "... test_throughput.i"
+	@echo "... test_throughput.s"
 .PHONY : help
 
 

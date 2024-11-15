@@ -1,0 +1,2 @@
+/usr/bin/ar qc libWeatherLib.a CMakeFiles/WeatherLib.dir/WeatherServer.cpp.o CMakeFiles/WeatherLib.dir/WeatherClient.cpp.o
+/usr/bin/ranlib libWeatherLib.a
