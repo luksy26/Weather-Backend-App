@@ -3,6 +3,7 @@
 #include <unordered_map>
 #include <vector>
 #include <memory>
+#include <unordered_set>
 
 // Forward declaration of client
 class WeatherClient;
@@ -40,7 +41,7 @@ private:
     // hashmap from location -> clients
     std::unordered_map<
             std::string,
-            std::vector<std::shared_ptr<WeatherClient>>
+            std::unordered_set<std::shared_ptr<WeatherClient>>
             > subscribers;
     // hashmap from location -> weather condition
     std::unordered_map<std::string, std::string> weatherData;

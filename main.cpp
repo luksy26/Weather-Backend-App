@@ -1,6 +1,8 @@
 #include "WeatherServer.h"
 #include "WeatherClient.h"
 
+void infoMessage();
+
 int main() {
     auto server = std::make_shared<WeatherServer>();
     auto client1 = std::make_shared<WeatherClient>("Client1", server);
@@ -21,5 +23,12 @@ int main() {
     client1->unsubscribeFromLocation("New York");
     server->updateWeatherData("New York", "Rainy, 60°F");
 
+    infoMessage();
+
     return 0;
+}
+
+void infoMessage() {
+    std::cout << "Demo finished!\nTake a look in `main.cpp` to"
+        " understand the API\n";
 }

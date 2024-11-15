@@ -5,7 +5,7 @@
 void WeatherServer::subscribeClient(
     const std::shared_ptr<WeatherClient>& client,
     const std::string& location) {
-    subscribers[location].push_back(client);
+    subscribers[location].insert(client);
 }
 
 void WeatherServer::unsubscribeClient(
@@ -13,9 +13,7 @@ void WeatherServer::unsubscribeClient(
     const std::string& location
     ) {
     auto& clients = subscribers[location];
-    clients.erase(
-        std::remove(clients.begin(), clients.end(), client), clients.end()
-        );
+    clients.erase(client);
 }
 
 void WeatherServer::notifyClients(
