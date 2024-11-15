@@ -72,7 +72,9 @@ TODO
 
 ```bash
 git clone http`s://github.com/luksy26/Weather-Backend-App.git
-cd Weather-Backend-App/build
+cd Weather-Backend-App
+mkdir build
+cd build
 cmake ..
 make
 ```
