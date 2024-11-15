@@ -71,7 +71,7 @@ TODO
 ## How to run
 
 ```bash
-git clone http`s://github.com/luksy26/Weather-Backend-App.git
+git clone https://github.com/luksy26/Weather-Backend-App.git
 cd Weather-Backend-App
 mkdir build
 cd build
