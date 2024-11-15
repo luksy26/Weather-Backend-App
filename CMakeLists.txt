@@ -22,3 +22,7 @@ target_link_libraries(test_latency WeatherLib)
 # Throughput testing executable
 add_executable(test_throughput test_throughput.cpp)
 target_link_libraries(test_throughput WeatherLib)
+
+# Resource usage testing executable
+add_executable(test_resource_usage test_resource_usage.cpp)
+target_link_libraries(test_resource_usage WeatherLib)

@@ -168,6 +168,19 @@ test_throughput/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_throughput.dir/build.make CMakeFiles/test_throughput.dir/build
 .PHONY : test_throughput/fast
 
+#=============================================================================
+# Target rules for targets named test_resource_usage
+
+# Build rule for target.
+test_resource_usage: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_resource_usage
+.PHONY : test_resource_usage
+
+# fast build rule for target.
+test_resource_usage/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_resource_usage.dir/build.make CMakeFiles/test_resource_usage.dir/build
+.PHONY : test_resource_usage/fast
+
 WeatherClient.o: WeatherClient.cpp.o
 .PHONY : WeatherClient.o
 
@@ -264,6 +277,30 @@ test_latency.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_latency.dir/build.make CMakeFiles/test_latency.dir/test_latency.cpp.s
 .PHONY : test_latency.cpp.s
 
+test_resource_usage.o: test_resource_usage.cpp.o
+.PHONY : test_resource_usage.o
+
+# target to build an object file
+test_resource_usage.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_resource_usage.dir/build.make CMakeFiles/test_resource_usage.dir/test_resource_usage.cpp.o
+.PHONY : test_resource_usage.cpp.o
+
+test_resource_usage.i: test_resource_usage.cpp.i
+.PHONY : test_resource_usage.i
+
+# target to preprocess a source file
+test_resource_usage.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_resource_usage.dir/build.make CMakeFiles/test_resource_usage.dir/test_resource_usage.cpp.i
+.PHONY : test_resource_usage.cpp.i
+
+test_resource_usage.s: test_resource_usage.cpp.s
+.PHONY : test_resource_usage.s
+
+# target to generate assembly for a file
+test_resource_usage.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_resource_usage.dir/build.make CMakeFiles/test_resource_usage.dir/test_resource_usage.cpp.s
+.PHONY : test_resource_usage.cpp.s
+
 test_throughput.o: test_throughput.cpp.o
 .PHONY : test_throughput.o
 
@@ -299,6 +336,7 @@ help:
 	@echo "... WeatherLib"
 	@echo "... demo"
 	@echo "... test_latency"
+	@echo "... test_resource_usage"
 	@echo "... test_throughput"
 	@echo "... WeatherClient.o"
 	@echo "... WeatherClient.i"
@@ -312,6 +350,9 @@ help:
 	@echo "... test_latency.o"
 	@echo "... test_latency.i"
 	@echo "... test_latency.s"
+	@echo "... test_resource_usage.o"
+	@echo "... test_resource_usage.i"
+	@echo "... test_resource_usage.s"
 	@echo "... test_throughput.o"
 	@echo "... test_throughput.i"
 	@echo "... test_throughput.s"

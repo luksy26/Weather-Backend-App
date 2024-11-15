@@ -47,4 +47,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/demo.dir/DependInfo.cmake"
   "CMakeFiles/test_latency.dir/DependInfo.cmake"
   "CMakeFiles/test_throughput.dir/DependInfo.cmake"
+  "CMakeFiles/test_resource_usage.dir/DependInfo.cmake"
   )
