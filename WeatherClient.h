@@ -1,3 +1,6 @@
+#ifndef WEATHER_CLIENT_H
+#define WEATHER_CLIENT_H
+
 #include "Notifications/NotificationsAbstractFactory.h"
 #include "Proxy/WeatherServiceProxy.h"
 #include <iostream>
@@ -12,6 +15,12 @@ class WeatherClient : public std::enable_shared_from_this<WeatherClient> {
   public:
 	WeatherClient(const std::string &name, DeviceType device_type,
 				  std::shared_ptr<WeatherService> server);
+
+	const std::string &getName() const { return name; }
+	std::shared_ptr<WeatherService> getServer() const { return server; }
+	std::shared_ptr<NotificationFactory> getNotificationFactory() const {
+		return notificationFactory;
+	}
 
 	// Subscribe to updates for a specific location
 	void subscribeToLocation(const std::string &location);
@@ -34,3 +43,5 @@ class WeatherClient : public std::enable_shared_from_this<WeatherClient> {
 	std::shared_ptr<WeatherService> server;
 	std::shared_ptr<NotificationFactory> notificationFactory;
 };
+
+#endif // WEATHER_CLIENT_H

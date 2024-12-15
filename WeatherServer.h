@@ -1,4 +1,7 @@
 
+#ifndef WEATHER_SERVER_H
+#define WEATHER_SERVER_H
+
 #include "Proxy/WeatherService.h"
 
 #include <iostream>
@@ -25,11 +28,13 @@ class WeatherServer : public WeatherService {
 
 	// Notify clients of weather updates
 	void notifyClients(const std::string &location,
-					   const std::string &weatherCondition);
+					   const std::string &weatherCondition,
+					   const bool severeWeatherCondition);
 
 	// Add weather report for a location
 	void updateWeatherData(const std::string &location,
-						   const std::string &condition);
+						   const std::string &condition,
+						   const bool severeWeatherCondition);
 
 	// Retrieve the weather report for a specific location
 	std::string getWeatherReport(const std::string &location);
@@ -42,3 +47,5 @@ class WeatherServer : public WeatherService {
 	// hashmap from location -> weather condition
 	std::unordered_map<std::string, std::string> weatherData;
 };
+
+#endif // WEATHER_SERVER_H

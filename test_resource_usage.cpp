@@ -97,7 +97,8 @@ int main(int argc, char *argv[]) {
 
 	// Send multiple updates
 	for (int i = 0; i < num_updates; ++i) {
-		server->updateWeatherData(location, "Condition #" + std::to_string(i));
+		server->updateWeatherData(location, "Condition #" + std::to_string(i),
+								  false);
 	}
 
 	// Measure resource usage after sending updates

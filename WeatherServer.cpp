@@ -14,16 +14,28 @@ void WeatherServer::unsubscribeClient(
 }
 
 void WeatherServer::notifyClients(const std::string &location,
-								  const std::string &weatherCondition) {
+								  const std::string &weatherCondition,
+								  const bool severeWeatherCondition) {
 	for (auto &client : subscribers[location]) {
-		client->receiveNotification(location, weatherCondition);
+		if (severeWeatherCondition) {
+			client->getNotificationFactory()
+				->createSevereWeatherNotification()
+				->notify(client->getName(), location, weatherCondition);
+		} else {
+			client->getNotificationFactory()
+				->createDailyUpdateNotification()
+				->notify(client->getName(), location, weatherCondition);
+		}
+
+		// client->receiveNotification(location, weatherCondition);
 	}
 }
 
 void WeatherServer::updateWeatherData(const std::string &location,
-									  const std::string &condition) {
+									  const std::string &condition,
+									  const bool severeWeatherCondition) {
 	weatherData[location] = condition;
-	notifyClients(location, condition);
+	notifyClients(location, condition, severeWeatherCondition);
 }
 
 std::string WeatherServer::getWeatherReport(const std::string &location) {

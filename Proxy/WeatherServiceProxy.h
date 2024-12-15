@@ -63,16 +63,20 @@ class WeatherServiceProxy : public WeatherService {
 
 	// Notify clients of weather updates
 	void notifyClients(const std::string &location,
-					   const std::string &weatherCondition) {
-		realService->notifyClients(location, weatherCondition);
+					   const std::string &weatherCondition,
+					   const bool severeWeatherCondition) {
+		realService->notifyClients(location, weatherCondition,
+								   severeWeatherCondition);
 	}
 
 	// Add weather report for a location
 	void updateWeatherData(const std::string &location,
-						   const std::string &condition) {
-		std::cout << "Updating data for" << location << " as " << condition
+						   const std::string &condition,
+						   const bool severeWeatherCondition) {
+		std::cout << "Updating data for " << location << " as " << condition
 				  << "\n";
-		realService->updateWeatherData(location, condition);
+		realService->updateWeatherData(location, condition,
+									   severeWeatherCondition);
 	}
 };
 

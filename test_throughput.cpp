@@ -37,7 +37,8 @@ int main(int argc, char *argv[]) {
 	// Measure throughput
 	auto start = std::chrono::high_resolution_clock::now();
 	for (int i = 0; i < num_updates; ++i) { // Send multiple notifications
-		server->updateWeatherData(location, "Condition #" + std::to_string(i));
+		server->updateWeatherData(location, "Condition #" + std::to_string(i),
+								  false);
 	}
 	auto end = std::chrono::high_resolution_clock::now();
 

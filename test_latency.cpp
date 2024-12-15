@@ -63,7 +63,8 @@ int main(int argc, char *argv[]) {
 
 	for (int i = 0; i < num_updates; ++i) {
 		auto start_notify = std::chrono::high_resolution_clock::now();
-		server->updateWeatherData(location, "Condition #" + std::to_string(i));
+		server->updateWeatherData(location, "Condition #" + std::to_string(i),
+								  false);
 		auto end_notify = std::chrono::high_resolution_clock::now();
 		auto notify_time =
 			std::chrono::duration_cast<std::chrono::microseconds>(end_notify -

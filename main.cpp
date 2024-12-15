@@ -1,5 +1,6 @@
 #include "Commands/CommandInvoker.h"
-#include "Commands/WeatherCommands.h"
+#include "Commands/RequestWeatherReportCommand.h"
+#include "Commands/UpdateWeatherDataCommand.h"
 #include "Notifications/NotificationTypes.h"
 #include "Notifications/NotificationsAbstractFactory.h"
 #include "Proxy/WeatherServiceProxy.h"
@@ -35,47 +36,48 @@ int main() {
 	client2->subscribeToLocation("Los Angeles");
 	client2->subscribeToLocation("New York");
 
+	// std::cout << "\n**Updating weather data in the server**\n";
 	// Update weather data on the server
-	weatherServiceProxy->updateWeatherData("Paris", "Sunny, 22°C");
-	weatherServiceProxy->updateWeatherData("Bucharest", "Rainy, 15°C");
-	weatherServiceProxy->updateWeatherData("Los Angeles", "Cloudy, 12°C");
-	weatherServiceProxy->updateWeatherData("Rome", "Sunny, 15°C");
+	// weatherServiceProxy->updateWeatherData("Paris", "Sunny, 22°C", false);
+	// weatherServiceProxy->updateWeatherData("Bucharest", "Rainy, 15°C", true);
+	// weatherServiceProxy->updateWeatherData("Los Angeles", "Cloudy, 12°C",
+	// 									   false);
+	// weatherServiceProxy->updateWeatherData("Rome", "Sunny, 15°C", false);
 
-	// Demonstrating Proxy Pattern: Request weather reports
-	std::cout << "\n**Using Proxy to Fetch Weather Reports**\n";
-	client1->requestWeatherReport("New York"); // Through server initially
-	client1->requestWeatherReport("New York"); // Now from proxy cache
+	// // Demonstrating Proxy Pattern: Request weather reports
+	// std::cout << "\n**Using Proxy to Fetch Weather Reports**\n";
+	// client1->requestWeatherReport("Paris"); // Through server initially
+	// client1->requestWeatherReport("Paris"); // Now from proxy cache
 
-	client2->requestWeatherReport("Los Angeles"); // Through server
-	client2->requestWeatherReport("Los Angeles"); // From proxy cache
-
-	// Create Notification Factories
-	std::shared_ptr<NotificationFactory> androidFactory =
-		std::make_shared<AndroidNotificationFactory>();
-	std::shared_ptr<NotificationFactory> appleFactory =
-		std::make_shared<AppleNotificationFactory>();
-
-	std::cout << "\n**Sending Notifications to Clients**\n";
-
-	// Send notifications using Abstract Factory Pattern
-	auto androidUpdate = androidFactory->createDailyUpdateNotification();
-	auto appleAlert = appleFactory->createSevereWeatherNotification();
-
-	androidUpdate->notify("Client1", "New York");
-	appleAlert->notify("Client2", "Los Angeles");
+	// client2->requestWeatherReport("Los Angeles"); // Through server
+	// client2->requestWeatherReport("Los Angeles"); // From proxy cache
 
 	// Demonstrating Command Pattern: On-demand Weather Commands
 	std::cout << "\n**Using Command Pattern for On-Demand Requests**\n";
+
+	// Create Command Invoker
 	CommandInvoker invoker;
-	WeatherReceiver weatherReceiver;
 
-	auto onDemandCommand1 =
-		std::make_shared<OnDemandWeatherCommand>(weatherReceiver, "New York");
-	auto onDemandCommand2 = std::make_shared<OnDemandWeatherCommand>(
-		weatherReceiver, "Los Angeles");
+	// Add commands to the invoker
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Paris", "Sunny, 22°C", false));
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Bucharest", "Rainy, 15°C", true));
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Los Angeles", "Cloudy, 12°C", false));
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Rome", "Sunny, 15°C", false));
 
-	invoker.addCommand(onDemandCommand1);
-	invoker.addCommand(onDemandCommand2);
+	invoker.addCommand(
+		std::make_shared<RequestWeatherReportCommand>(client1, "Paris"));
+	invoker.addCommand(
+		std::make_shared<RequestWeatherReportCommand>(client1, "Paris"));
+	invoker.addCommand(
+		std::make_shared<RequestWeatherReportCommand>(client2, "Los Angeles"));
+	invoker.addCommand(
+		std::make_shared<RequestWeatherReportCommand>(client2, "Los Angeles"));
+
+	// Execute all commands
 	invoker.executeCommands();
 
 	return 0;
