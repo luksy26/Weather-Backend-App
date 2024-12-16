@@ -2,6 +2,7 @@
 #define WEATHER_SERVICE_H
 
 #include <string>
+#include <memory>
 
 class WeatherClient;
 
