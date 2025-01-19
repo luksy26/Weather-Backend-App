@@ -31,15 +31,13 @@ class WeatherServiceProxy : public WeatherService {
 		if (cache.find(location) != cache.end()) {
 			auto &[cachedReport, timestamp] = cache[location];
 			if (now - timestamp < cacheExpiry) {
-				std::cout << "[Proxy] Returning cached weather report for "
-						  << location << "\n";
+
 				return cachedReport;
 			}
 		}
 
 		// Fetch fresh data from the real service if cache is expired or missing
-		std::cout << "[Proxy] Fetching weather report from real service for "
-				  << location << "\n";
+
 		std::string freshReport = realService->getWeatherReport(location);
 
 		// Update the cache
@@ -73,8 +71,7 @@ class WeatherServiceProxy : public WeatherService {
 	void updateWeatherData(const std::string &location,
 						   const std::string &condition,
 						   const bool severeWeatherCondition) {
-		std::cout << "Updating data for " << location << " as " << condition
-				  << "\n";
+
 		realService->updateWeatherData(location, condition,
 									   severeWeatherCondition);
 	}

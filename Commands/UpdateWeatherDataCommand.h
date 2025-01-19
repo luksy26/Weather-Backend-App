@@ -18,7 +18,5 @@ class UpdateWeatherDataCommand : public Command {
 	void execute() override {
 		weatherService->updateWeatherData(location, weatherCondition,
 										  severeWeatherCondition);
-		std::cout << "Weather data updated for location: " << location
-				  << " with condition: " << weatherCondition << "\n";
-	}
+		}
 };

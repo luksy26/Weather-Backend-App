@@ -20,7 +20,6 @@ class CommandInvoker {
 			auto cmd = commandQueue.front();
 			commandQueue.pop();
 			cmd->execute();
-			printf("\n");
 		}
 	}
 };

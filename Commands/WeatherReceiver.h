@@ -17,14 +17,9 @@ class WeatherReceiver {
 
 	void fetchWeather(const std::string &location) {
 		// Simulate fetching weather data
-		std::cout << "Fetching on-demand weather for " << location << "...\n";
-		std::cout << weatherService->getWeatherReport(location) << "\n";
 	}
 
-	void logRequest(const std::string &location) {
-		std::cout << "Logging request for weather data at location: "
-				  << location << "\n";
-	}
+	void logRequest(const std::string &location) {}
 };
 
 #endif // WEATHER_RECEIVER_H

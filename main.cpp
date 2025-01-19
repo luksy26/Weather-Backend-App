@@ -24,11 +24,6 @@ int main() {
 	auto client2 = std::make_shared<WeatherClient>("Client2", DeviceType::iOS,
 												   weatherServiceProxy);
 
-	std::cout << "Clients have been created with the following configuration:\n"
-			  << client1->to_string() << "\n";
-
-	std::cout << client2->to_string() << "\n";
-
 	// Clients subscribe to locations
 	client1->subscribeToLocation("Paris");
 	client1->subscribeToLocation("Bucharest");
@@ -53,7 +48,6 @@ int main() {
 	// client2->requestWeatherReport("Los Angeles"); // From proxy cache
 
 	// Demonstrating Command Pattern: On-demand Weather Commands
-	std::cout << "\n**Using Command Pattern for On-Demand Requests**\n";
 
 	// Create Command Invoker
 	CommandInvoker invoker;

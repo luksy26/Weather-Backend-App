@@ -10,10 +10,10 @@ createNotification(DeviceType device_type) {
 
 	// Choose the correct factory based on the device type
 	if (device_type == DeviceType::Android) {
-		std::cout << "Creating an Android factory\n";
+
 		factory = std::make_shared<AndroidNotificationFactory>();
 	} else if (device_type == DeviceType::iOS) {
-		std::cout << "Creating an Apple factory\n";
+
 		factory = std::make_shared<AppleNotificationFactory>();
 	} else {
 		throw std::invalid_argument("Unknown DeviceType provided");
@@ -30,25 +30,18 @@ WeatherClient::WeatherClient(const std::string &name, DeviceType device_type,
 
 void WeatherClient::subscribeToLocation(const std::string &location) {
 	server->subscribeClient(shared_from_this(), location);
-	std::cout << name << " subscribed to " << location << "\n";
 }
 
 void WeatherClient::unsubscribeFromLocation(const std::string &location) {
 	server->unsubscribeClient(shared_from_this(), location);
-	std::cout << name << " unsubscribed from " << location << "\n";
 }
 
 void WeatherClient::requestWeatherReport(const std::string &location) {
-	std::cout << name << " requested weather for " << location << ": " << "\n";
 	std::string report = server->getWeatherReport(location);
-	std::cout << report << "\n";
 }
 
 void WeatherClient::receiveNotification(const std::string &location,
-										const std::string &condition) {
-	std::cout << name << " received update for " << location << ": "
-			  << condition << "\n";
-}
+										const std::string &condition) {}
 
 std::string WeatherClient::to_string() const {
 	std::ostringstream oss;
