@@ -13,6 +13,8 @@
 #else
 #include <sys/resource.h>
 #endif
+#include "Commands/CommandInvoker.h"
+#include "Commands/UpdateWeatherDataCommand.h"
 
 // Function to get memory usage (in kilobytes)
 long getMemoryUsage() {
@@ -56,6 +58,11 @@ double getCPUTime() {
 #endif
 }
 
+DeviceType getRandomDeviceType() {
+	int number = rand() % 2;
+	return number == 0 ? DeviceType::Android : DeviceType::iOS;
+}
+
 int main(int argc, char *argv[]) {
 	// Parse command-line arguments
 	if (argc < 3) {
@@ -74,44 +81,53 @@ int main(int argc, char *argv[]) {
 	}
 
 	auto server = std::make_shared<WeatherServer>();
-	std::vector<std::shared_ptr<WeatherClient>> clients;
+	// Initialize Proxy
+	auto weatherServiceProxy = std::make_shared<WeatherServiceProxy>(server);
 
-	// Create clients and subscribe them to a single location
-	std::string location = "TestLocation";
+	std::vector<std::shared_ptr<WeatherClient>> clients;
 
 	// Track initial resource usage
 	std::cout << "Initial Memory Usage: " << getMemoryUsage()
 			  << " KB, Initial CPU Time: " << getCPUTime() << " seconds\n";
 
+	std::array<std::string, 3> locations = {"Paris", "Bucharest",
+											"Los Angeles"};
+
 	for (int i = 0; i < num_clients; ++i) {
 		auto client = std::make_shared<WeatherClient>(
 
-			"Client" + std::to_string(i), DeviceType::Android, server);
+			"Client" + std::to_string(i), getRandomDeviceType(), server);
 		clients.push_back(client);
-		client->subscribeToLocation(location);
+		client->subscribeToLocation(locations.at(i % 3));
 	}
 
 	// Measure resource usage after subscription
 	std::cout << "After Subscription - Memory Usage: " << getMemoryUsage()
 			  << " KB, CPU Time: " << getCPUTime() << " seconds\n";
 
-	// Send multiple updates
-	for (int i = 0; i < num_updates; ++i) {
-		server->updateWeatherData(location, "Condition #" + std::to_string(i),
-								  false);
-	}
+	// Create Command Invoker
+	CommandInvoker invoker;
+
+	// Add commands to the invoker
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Paris", "Sunny, 22°C", false));
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Bucharest", "Rainy, 15°C", true));
+	invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+		weatherServiceProxy, "Los Angeles", "Cloudy, 12°C", false));
+
+	invoker.executeCommands();
 
 	// Measure resource usage after sending updates
 	std::cout << "After Sending Updates - Memory Usage: " << getMemoryUsage()
 			  << " KB, CPU Time: " << getCPUTime() << " seconds\n";
 
-	// Unsubscribe clients
-	for (const auto &client : clients) {
-		client->unsubscribeFromLocation(location);
+	for (int i = 0; i < num_clients; ++i) {
+		clients[i]->unsubscribeFromLocation(locations.at(i % 3));
 	}
 
 	// Measure resource usage after unsubscribing
-	std::cout << "After Unsubscription - Memory Usage: " << getMemoryUsage()
+	std::cout << "After UnsubscriptionF - Memory Usage: " << getMemoryUsage()
 			  << " KB, CPU Time: " << getCPUTime() << " seconds\n";
 
 	return 0;

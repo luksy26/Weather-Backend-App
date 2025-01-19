@@ -1,9 +1,18 @@
+#include "Commands/CommandInvoker.h"
+#include "Commands/UpdateWeatherDataCommand.h"
 #include "WeatherClient.h"
 #include "WeatherServer.h"
 #include <chrono>
 #include <iostream>
 #include <memory>
 #include <vector>
+
+#define MAX_TEMPERATURE 38
+
+DeviceType getRandomDeviceType() {
+	int number = rand() % 2;
+	return number == 0 ? DeviceType::Android : DeviceType::iOS;
+}
 
 int main(int argc, char *argv[]) {
 	// Parse command-line arguments
@@ -23,23 +32,35 @@ int main(int argc, char *argv[]) {
 	}
 
 	auto server = std::make_shared<WeatherServer>();
+	auto weatherServiceProxy = std::make_shared<WeatherServiceProxy>(server);
 	std::vector<std::shared_ptr<WeatherClient>> clients;
 
-	// Create multiple clients and subscribe them to a location
-	std::string location = "TestCity";
+	std::array<std::string, 3> locations = {"Paris", "Bucharest",
+											"Los Angeles"};
+
 	for (int i = 0; i < num_clients; ++i) {
 		auto client = std::make_shared<WeatherClient>(
-			"Client" + std::to_string(i), DeviceType::Android, server);
-		client->subscribeToLocation(location);
+			"Client" + std::to_string(i), getRandomDeviceType(), server);
+		client->subscribeToLocation(locations.at(i % 3));
 		clients.push_back(client);
 	}
 
 	// Measure throughput
 	auto start = std::chrono::high_resolution_clock::now();
-	for (int i = 0; i < num_updates; ++i) { // Send multiple notifications
-		server->updateWeatherData(location, "Condition #" + std::to_string(i),
-								  false);
+
+	// Create Command Invoker
+	CommandInvoker invoker;
+
+	for (int i = 0; i < num_updates; i++) {
+		invoker.addCommand(std::make_shared<UpdateWeatherDataCommand>(
+			weatherServiceProxy, locations.at(i % 3),
+			"Temperature: " + std::to_string(i % MAX_TEMPERATURE) + "°C",
+			i % 2));
 	}
+
+	// Add commands to the invoker
+	invoker.executeCommands();
+
 	auto end = std::chrono::high_resolution_clock::now();
 
 	auto duration =
